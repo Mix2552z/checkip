@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check IP Address</title>
+    <link rel="icon" href="https://cdns-images.dzcdn.net/images/artist/e213fe04533cd23f957bdafae1c79b0b/500x500.jpg">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 24px;
+    color: #0070f3;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Check IP Address</h1>
+    <h3>IP Address</h3>
+    <h1 id="ip-address">Loading...</h1>
+    <img src="https://cdns-images.dzcdn.net/images/artist/e213fe04533cd23f957bdafae1c79b0b/500x500.jpg" alt="" width="80%">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    fetch("https://api.ipify.org?format=json")
+        .then((response) => response.json())
+        .then((data) => {
+            const ipAddress = data.ip;
+            document.getElementById("ip-address").textContent = ipAddress;
+        })
+        .catch((error) => {
+            console.error("Error fetching IP address:", error);
+            document.getElementById("ip-address").textContent = "Error fetching IP address.";
+        });
+});
+
+    </script>
+</body>
+</html>
